@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cannabis withdrawal symptom check — Honest Cannabis</title>
-<meta name="description" content="Based on the Cannabis Withdrawal Scale. Rate your symptoms over the past 24 hours and get a meaningful number." />
+<meta name="description" content="Cannabis Withdrawal Scale: 19 items, 0–10. An educational self-rating, not a diagnostic instrument." />
 <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -23,18 +23,23 @@
 
 <main>
 
-<div class="eyebrow">Self-check · Withdrawal</div>
-<h1>Cannabis withdrawal symptom check</h1>
+<div class="eyebrow">Self-check · Withdrawal symptoms</div>
+<h1>Cannabis Withdrawal Scale</h1>
 <p class="lede">
-  Adapted from the Cannabis Withdrawal Scale (Allsop et al., 2012) and the DSM-5
-  withdrawal criteria. Rate each symptom for how it's been for you over the
+  These are the 19 symptoms in the Cannabis Withdrawal Scale (Allsop et al., 2012), the
+  most-cited measure of cannabis withdrawal in research. Rate each symptom from
+  <strong>0 (not at all)</strong> to <strong>10 (extremely)</strong> over the
   <strong>past 24 hours</strong>. Nothing is stored or sent.
 </p>
 
-<div class="card soft">
-  <p>This is most informative if you've recently stopped or significantly cut down on cannabis,
-  or if you're considering doing so and want a baseline. You can repeat it daily — the curve
-  (each day's score over time) is often more useful than any single number.</p>
+<div class="card warn">
+  <p><strong>Important framing:</strong> the 19 items and 0–10 scoring below are from
+  the published CWS. The <em>interpretation</em> of any specific total score is not
+  standardized — the original validation did not define hard severity cutoffs.
+  This page reports your total and offers descriptive context based on the
+  literature, but it is an <strong>educational self-rating, not a validated
+  diagnostic instrument</strong>. A clinician's evaluation is the only way to
+  actually diagnose cannabis withdrawal.</p>
 </div>
 
 <form id="cws-form" class="tool-form">
@@ -54,7 +59,8 @@
     </select>
   </div>
 
-  <p class="muted">For each symptom: <strong>0</strong> = not at all · <strong>1</strong> = mild · <strong>2</strong> = moderate · <strong>3</strong> = severe.</p>
+  <p class="muted">For each symptom, drag the slider to where it's been for you over the
+  past 24 hours. <strong>0</strong> = not at all · <strong>10</strong> = extremely.</p>
 
   <div id="symptoms"></div>
 
@@ -70,52 +76,41 @@
 
 <h2>How to read this</h2>
 
-<p>The Cannabis Withdrawal Scale was validated by Allsop et al. (<em>PLoS ONE</em> 2012) for
-measuring withdrawal severity in research and clinical contexts. This version is a
-simplified, 0–3-scored adaptation for self-use. It captures the symptom <em>set</em>
-that's diagnostic for cannabis withdrawal under DSM-5-TR.</p>
+<p>The CWS total ranges from <strong>0 to 190</strong> (19 items × 0–10 each). The
+"Discomfort Score" is the sum of all item ratings. The mean per item (total ÷ 19)
+gives a rough sense of average symptom intensity.</p>
 
-<table>
-<thead><tr><th>Total score</th><th>Pattern</th></tr></thead>
-<tbody>
-<tr><td>0–8</td><td>Minimal. Few or no withdrawal-pattern symptoms above background.</td></tr>
-<tr><td>9–16</td><td>Mild withdrawal pattern.</td></tr>
-<tr><td>17–28</td><td>Moderate withdrawal pattern — clinically significant.</td></tr>
-<tr><td>29+</td><td>Severe withdrawal pattern.</td></tr>
-</tbody>
-</table>
+<p>The original Allsop 2012 paper and subsequent work using the CWS did not establish
+fixed severity cutoffs. The scale's intended use is <strong>longitudinal tracking</strong>
+— rating the same person across days to see whether symptoms are intensifying, peaking,
+or resolving — and as a continuous outcome variable in trials, not as a single-time
+diagnostic threshold.</p>
 
-<p>For interpretation, the timing relative to your last use matters as much as the
-number:</p>
-
+<p>What the literature does support:</p>
 <ul>
-  <li><strong>Day 1:</strong> Symptoms are usually mild, often missed entirely. A high score on day 1 suggests heavy use and likely a hard several days ahead.</li>
-  <li><strong>Days 2–6 (peak):</strong> This is when scores are highest. A moderate-to-severe score here is the expected pattern in heavy users — not a sign of danger, but a signal to ride it out and not return to use.</li>
-  <li><strong>Week 2:</strong> Scores should be dropping. If they aren't, look at sleep and mood — those linger longest.</li>
-  <li><strong>Week 3+:</strong> Most symptoms should be down significantly. Persistent sleep disturbance is common but tractable.</li>
+  <li>In dependent cannabis users following cessation, total scores typically rise from day 1, peak around days 2–6, and decline through weeks 2–3.</li>
+  <li>Mean total scores in research samples vary widely; peak medians reported are typically in the 20–60 range, with substantial individual variation. Some heavy users score much higher; many lighter users score much lower.</li>
+  <li>The most discriminating items in Allsop's validation were craving, sleep difficulty, mood-related items (anxiety, irritability, depression), and appetite loss. A score driven mostly by these has a more characteristic pattern than the same score driven by, say, headache alone.</li>
 </ul>
 
-<h2>If your score is high</h2>
+<h2>Interpreting your number, descriptively</h2>
 
-<p>This is the expected curve, not a problem with you. Cannabis withdrawal is uncomfortable
-and not dangerous. You don't need medical care for it unless symptoms are severe,
-scary, or include features that don't fit (like persistent vomiting that doesn't track
-with the timeline — that could be <a href="../pages/chs.html">CHS</a> rather than
-straightforward withdrawal).</p>
+<p>Rather than invented severity bands, here are honest interpretive frames:</p>
 
-<p>Concrete things that help, from <a href="../pages/quitting.html">the quitting page</a>:
-sleep planning, exercise, hydration, not stacking alcohol or sedatives, and telling
-someone you're going through it.</p>
-
-<h2>If your score is low but you're sure you're in withdrawal</h2>
-
-<p>A few possibilities:</p>
 <ul>
-  <li>It's still too early. Withdrawal peaks at day 2–6 for most heavy users.</li>
-  <li>You weren't a heavy enough user for severe withdrawal. (Good news.)</li>
-  <li>You're in the protracted phase — weeks in, with low-grade mood or sleep changes only. This is common and resolves slowly.</li>
-  <li>What you're experiencing is something else — your underlying mental health, sleep disorder, or something unrelated to cannabis.</li>
+  <li><strong>If your score is low and you've recently stopped:</strong> you may not be at peak yet (the curve usually rises through days 2–6), or you may not have been a heavy enough user to produce a strong syndrome. Either is reassuring.</li>
+  <li><strong>If your score is moderate-to-high and you're days into a stop:</strong> you're experiencing the syndrome the way moderate-to-heavy users typically do. Uncomfortable, not dangerous, and following an expected curve. The <a href="../pages/quitting.html">quitting page</a> has practical strategies; the single most important one is making it past day 6 without resuming use.</li>
+  <li><strong>If your score is high and you're still using:</strong> this is unusual — withdrawal items, by definition, ease with use. If you're scoring high while actively using, it's worth asking whether what you're rating is really withdrawal or whether something else is going on (anxiety disorder, depression, illness).</li>
+  <li><strong>If your score is moderate or high and you're more than 4 weeks out:</strong> classic cannabis withdrawal should be mostly resolved by then. Lingering symptoms at that timepoint often have another contributor worth investigating — talk to a clinician.</li>
 </ul>
+
+<h2>What this is and isn't</h2>
+
+<p>This is a way to put a number on something. It is <em>not</em> a diagnosis of cannabis
+withdrawal — the DSM-5-TR criteria (≥3 specific symptoms in a recent abstainer from
+heavy use) are the diagnostic standard, and a clinician applies them. Use this score
+the way you'd use a daily mood rating: as data, repeated over time, to see your own
+curve.</p>
 
 <hr />
 
@@ -123,6 +118,9 @@ someone you're going through it.</p>
 <p class="muted">Allsop DJ, Norberg MM, Copeland J, Fu S, Budney AJ. The Cannabis Withdrawal Scale
 development: patterns and predictors of cannabis withdrawal and distress.
 <em>PLoS ONE</em>. 2012;7(9):e44864.</p>
+<p class="muted">Items are reproduced here for educational self-rating. The CWS is the
+authors' instrument; interpretation on this page is descriptive and not part of any
+validated scoring system.</p>
 
 <p class="muted"><a href="../index.html">← Back to start</a> · <a href="./cudit-r.html">CUDIT-R</a> · <a href="./use-estimator.html">Use estimator</a></p>
 
@@ -131,113 +129,123 @@ development: patterns and predictors of cannabis withdrawal and distress.
 <footer class="site"><div class="wrap"><p>Honest Cannabis — patient education only. Not medical advice. Nothing entered here is stored or sent.</p></div></footer>
 
 <script>
-const symptoms = [
-  { id: 's1', label: 'Irritability, anger, or feeling on edge' },
-  { id: 's2', label: 'Anxiety or nervousness' },
-  { id: 's3', label: 'Depressed or low mood' },
-  { id: 's4', label: 'Trouble falling asleep' },
-  { id: 's5', label: 'Trouble staying asleep, or waking too early' },
-  { id: 's6', label: 'Disturbing or vivid dreams / nightmares' },
-  { id: 's7', label: 'Decreased appetite' },
-  { id: 's8', label: 'Restlessness, can’t sit still' },
-  { id: 's9', label: 'Stomach pain, cramps, or nausea' },
-  { id: 's10', label: 'Headache' },
-  { id: 's11', label: 'Shakiness or tremor' },
-  { id: 's12', label: 'Sweating, chills, or hot/cold flashes' },
-  { id: 's13', label: 'Cravings for cannabis' },
-  { id: 's14', label: 'Difficulty concentrating or remembering things' },
-  { id: 's15', label: 'Feeling overwhelmed or that things are too much' }
+const cwsItems = [
+  "I had a strong urge or craving to use cannabis",
+  "I felt that the only way to cope with discomfort was to use cannabis",
+  "I had trouble getting to sleep at night",
+  "I had nightmares and/or strange or vivid dreams",
+  "I felt anxious",
+  "I felt nervous",
+  "I felt restless",
+  "I felt irritable, or had angry outbursts",
+  "I felt angry",
+  "I had mood swings",
+  "I felt depressed",
+  "Life felt like an uphill struggle",
+  "I had no appetite",
+  "I felt nauseous",
+  "I had stomach pains",
+  "I had a headache",
+  "I had hot flashes",
+  "I had night sweats",
+  "I was easily distracted"
 ];
 
 const container = document.getElementById('symptoms');
-symptoms.forEach((s, i) => {
-  const div = document.createElement('div');
-  div.className = 'q';
-  div.innerHTML =
-    '<div class="qtext">' + (i+1) + '. ' + s.label + '</div>' +
-    '<div style="display:flex; gap:14px; flex-wrap:wrap;">' +
-      ['0 — Not at all', '1 — Mild', '2 — Moderate', '3 — Severe'].map((lab, v) =>
-        '<label style="margin:0;"><input type="radio" name="' + s.id + '" value="' + v + '" /> <span class="opt-text">' + lab + '</span></label>'
-      ).join('') +
+cwsItems.forEach((item, i) => {
+  const id = 'cws' + (i+1);
+  const wrap = document.createElement('div');
+  wrap.className = 'q';
+  wrap.innerHTML =
+    '<div class="qtext">' + (i+1) + '. ' + item + '</div>' +
+    '<div style="display:flex; align-items:center; gap:14px;">' +
+      '<span class="muted" style="font-size:0.8rem;">0</span>' +
+      '<input type="range" min="0" max="10" step="1" value="0" id="' + id + '" ' +
+        'oninput="document.getElementById(\'val-' + id + '\').textContent = this.value" ' +
+        'style="flex:1; accent-color: var(--accent);" />' +
+      '<span class="muted" style="font-size:0.8rem;">10</span>' +
+      '<span id="val-' + id + '" style="min-width: 2ch; font-weight:600; color: var(--accent-deep); font-variant-numeric: tabular-nums; text-align: right;">0</span>' +
     '</div>';
-  container.appendChild(div);
+  container.appendChild(wrap);
 });
 
 function scoreCWS() {
   let total = 0;
-  let unanswered = 0;
-  symptoms.forEach(s => {
-    const radios = document.getElementsByName(s.id);
-    let answered = false;
-    for (const r of radios) {
-      if (r.checked) {
-        total += parseInt(r.value, 10);
-        answered = true;
-        break;
-      }
-    }
-    if (!answered) unanswered++;
+  let topItems = [];
+  cwsItems.forEach((item, i) => {
+    const v = parseInt(document.getElementById('cws' + (i+1)).value, 10) || 0;
+    total += v;
+    topItems.push({ name: item, value: v });
   });
 
+  topItems.sort((a, b) => b.value - a.value);
+  const top3 = topItems.slice(0, 3).filter(x => x.value > 0);
+
   const lastUse = parseInt(document.getElementById('lastUse').value, 10);
+  const meanPerItem = (total / 19).toFixed(1);
   const res = document.getElementById('result');
 
-  if (unanswered > 0) {
-    res.className = 'result card warn show';
-    res.innerHTML = '<h3>Please rate all symptoms</h3><p>' + unanswered + ' symptom(s) still unrated. A 0 for "not at all" is fine — pick something for each.</p>';
-    res.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    return;
-  }
-
-  let band, color, headline, detail;
-  if (total <= 8) {
-    band = 'Minimal'; color = 'ok';
-    headline = 'Few or no withdrawal-pattern symptoms over background.';
-    detail = "A score of " + total + " / 45 is at or below typical baseline noise. If you've recently stopped using cannabis and this is your score, that's reassuring; if you're days into a stop and feeling fine, you may not have been a heavy enough user to produce significant withdrawal.";
-  } else if (total <= 16) {
-    band = 'Mild'; color = 'accent';
-    headline = 'A mild withdrawal pattern.';
-    detail = "A score of " + total + " / 45 is consistent with mild cannabis withdrawal. You may be early in the curve, or a light-to-moderate user. The pattern should ease over the next 1–2 weeks.";
-  } else if (total <= 28) {
-    band = 'Moderate — clinically significant'; color = 'warn';
-    headline = 'A moderate, clinically significant withdrawal pattern.';
-    detail = "A score of " + total + " / 45 is in the range that controlled studies consider clinically meaningful. If you've recently cut back or stopped, this is the expected pattern for moderate-to-heavy users — not dangerous, but uncomfortable. The <a href=\"../pages/quitting.html\">quitting page</a> has concrete strategies. The single best predictor of getting through it is making it past day 6 without resuming use.";
+  // Descriptive framing (not severity bands)
+  let pattern, color;
+  if (total === 0) {
+    pattern = "No symptoms rated. If you actually have no symptoms, that's a clean result. If you haven't filled the items in yet, slide them.";
+    color = 'ok';
+  } else if (total < 20) {
+    pattern = "A low overall total. Either you're at the beginning or end of a withdrawal curve, you weren't a heavy enough user to produce a strong syndrome, or what you're feeling isn't predominantly withdrawal.";
+    color = 'ok';
+  } else if (total < 60) {
+    pattern = "A moderate total. This is consistent with the kind of score moderate users often report during the first 1–2 weeks of abstinence. Track it across days — direction (rising/peaking/falling) is more informative than any single number.";
+    color = 'accent';
+  } else if (total < 110) {
+    pattern = "A high total. This is the range often seen in heavier users at the peak of the curve (typically days 2–6). It's uncomfortable but follows an expected pattern — symptoms should ease through weeks 2–3.";
+    color = 'warn';
   } else {
-    band = 'Severe'; color = 'danger';
-    headline = 'A severe withdrawal pattern.';
-    detail = "A score of " + total + " / 45 is severe. If you've recently stopped daily heavy use, especially concentrate or high-potency use, this is the textbook severe presentation. It is not medically dangerous in the way alcohol or benzodiazepine withdrawal can be — you can't die from this and you don't need supervised detox. But if symptoms are scary or you're worried about your safety in any way, talk to a clinician. Short courses of gabapentin, NAC, or short-term sleep medication can substantially ease the next 1–2 weeks.";
+    pattern = "A very high total. Severe withdrawal is uncomfortable but not medically dangerous in the way alcohol or benzodiazepine withdrawal can be. If it's scary, if you're having thoughts of self-harm, or if symptoms include features that don't fit (persistent vomiting beyond a few days, fever, anything that feels like a different illness), contact a clinician. Otherwise this is the textbook severe presentation of heavy-use withdrawal.";
+    color = 'danger';
   }
 
   let timing = '';
   if (lastUse === 0) {
-    timing = "<p><strong>Note:</strong> you said you're still using daily, so this score reflects your current state on cannabis — not withdrawal. A high score here suggests your current use may itself be contributing to mood, sleep, or anxiety symptoms.</p>";
+    timing = "<p><strong>Note:</strong> you said you're still using daily, so what you're rating is not really withdrawal — it's your current state on cannabis. A high score here suggests current use may be contributing to mood, sleep, or anxiety symptoms.</p>";
   } else if (lastUse === 1) {
-    timing = "<p><strong>Timing:</strong> within 24 hours of last use — you may not be at peak yet. Day 2–6 is typically when symptoms intensify. A score this early often understates what's coming.</p>";
+    timing = "<p><strong>Timing:</strong> within 24 hours of last use. You may not be at peak yet — day 2–6 is when scores typically intensify. A repeat tomorrow and the day after will be more informative than today's number alone.</p>";
   } else if (lastUse === 2 || lastUse === 3) {
-    timing = "<p><strong>Timing:</strong> 1–7 days since last use — you're in the peak window. Your score reflects the worst of the curve. Things ease from here.</p>";
+    timing = "<p><strong>Timing:</strong> 1–7 days since last use — the peak window. Your score reflects the worst of the curve. Things ease from here.</p>";
   } else if (lastUse === 4) {
     timing = "<p><strong>Timing:</strong> 1–2 weeks out — most physical symptoms have eased. Mood and sleep are usually the slowest to recover.</p>";
   } else if (lastUse === 5) {
-    timing = "<p><strong>Timing:</strong> 2–4 weeks out — nearing full resolution for most people. Residual sleep changes can persist a few more weeks.</p>";
+    timing = "<p><strong>Timing:</strong> 2–4 weeks out — approaching full resolution for most people. Residual sleep changes can persist a few more weeks.</p>";
   } else if (lastUse === 6) {
-    timing = "<p><strong>Timing:</strong> more than a month out. Cannabis withdrawal has resolved in most people by this point. Persistent symptoms at this stage usually have another cause worth investigating.</p>";
+    timing = "<p><strong>Timing:</strong> more than a month out. Classic cannabis withdrawal has typically resolved by this point. Persistent symptoms at this stage usually have another cause worth investigating.</p>";
   } else if (lastUse === 7) {
-    timing = "<p><strong>Timing:</strong> you said you don't use cannabis. The symptoms you've rated suggest something is going on, but this scale isn't the right way to read it. The DSM-5 withdrawal pattern is specific to recent cessation — if you're not in that situation and you're feeling these symptoms, it's worth talking to a clinician about other possibilities.</p>";
+    timing = "<p><strong>Timing:</strong> you said you don't use cannabis. The symptoms you've rated suggest something is going on, but the CWS is specific to recent cessation. If you're feeling these symptoms and aren't in that situation, it's worth talking to a clinician about other possibilities.</p>";
+  }
+
+  let topItemsHtml = '';
+  if (top3.length > 0) {
+    topItemsHtml = '<p><strong>Highest-rated items:</strong> ' +
+      top3.map(t => t.name.replace(/^I (had|felt|was) /, '').replace(/^I /, '') + ' (' + t.value + '/10)').join(' · ') + '</p>';
   }
 
   res.className = 'result card ' + color + ' show';
   res.innerHTML =
-    '<div class="score">' + total + '<span style="font-size: 1.2rem; color: var(--muted); font-weight: 400;"> / 45</span></div>' +
-    '<h3>' + band + '</h3>' +
-    '<p><strong>' + headline + '</strong></p>' +
-    '<p>' + detail + '</p>' +
+    '<div class="score">' + total + '<span style="font-size: 1.2rem; color: var(--muted); font-weight: 400;"> / 190</span></div>' +
+    '<p style="margin-top:0;"><strong>Mean per item:</strong> ' + meanPerItem + ' / 10 · 19 items × 0–10 (Cannabis Withdrawal Scale, Allsop 2012).</p>' +
+    '<h3>Descriptive pattern</h3>' +
+    '<p>' + pattern + '</p>' +
+    topItemsHtml +
     timing +
-    '<p class="muted" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.85rem;">Adapted from the Cannabis Withdrawal Scale (Allsop 2012) and DSM-5-TR criteria.</p>';
+    '<p class="muted" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.85rem;">This is an educational self-rating, not a diagnosis. The Allsop 2012 validation did not establish hard severity cutoffs — the framing above is descriptive only. For diagnosis, see a clinician applying DSM-5-TR criteria.</p>';
   res.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function resetCWS() {
   document.getElementById('cws-form').reset();
+  cwsItems.forEach((_, i) => {
+    const id = 'cws' + (i+1);
+    document.getElementById(id).value = 0;
+    document.getElementById('val-' + id).textContent = '0';
+  });
   const res = document.getElementById('result');
   res.className = 'result card';
   res.innerHTML = '';
