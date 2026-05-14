@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cannabis use & cost estimator — Honest Cannabis</title>
+<meta name="description" content="Estimate your monthly THC intake, money spent, and what a 30-day pause would save." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="../index.html" class="brand">Honest Cannabis<span class="dot">.</span></a>
+    <nav>
+      <a href="../pages/withdrawal.html">Withdrawal</a>
+      <a href="../pages/chs.html">CHS</a>
+      <a href="../pages/potency.html">Potency</a>
+      <a href="./cudit-r.html">Self-check</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="eyebrow">Self-check · Use & cost</div>
+<h1>Use & cost estimator</h1>
+<p class="lede">
+  Most people genuinely don't know how much cannabis they're consuming or what it costs
+  them annually. This tool gives you a number. Everything stays in your browser.
+</p>
+
+<div class="card soft">
+  <p>You can fill in whichever product you mostly use — flower, vape cart, concentrate, or
+  edibles. The numbers update as you type. If you use more than one, run it twice and add
+  the results in your head, or pick the one that dominates.</p>
+</div>
+
+<form id="use-form" class="tool-form">
+
+  <div class="field">
+    <label for="product">What's your primary product?</label>
+    <select id="product" onchange="updateProductUI(); calculate();">
+      <option value="flower">Flower (smoked or vaped)</option>
+      <option value="vape">Vape cart / distillate</option>
+      <option value="concentrate">Concentrate (dabs, wax, shatter, rosin)</option>
+      <option value="edible">Edibles</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <div class="field">
+      <label for="amount" id="amountLabel">Grams per day</label>
+      <input type="number" id="amount" min="0" step="0.1" value="0.5" oninput="calculate()" />
+      <p class="muted" id="amountHint" style="margin-top: 4px; font-size: 0.85rem;">A typical joint is 0.3–0.5 g. A bowl is ~0.25 g. A heavy daily user is 1–2 g.</p>
+    </div>
+
+    <div class="field">
+      <label for="daysPerWeek">Days per week of use</label>
+      <input type="number" id="daysPerWeek" min="0" max="7" step="1" value="7" oninput="calculate()" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field">
+      <label for="potency" id="potencyLabel">THC potency (%)</label>
+      <input type="number" id="potency" min="0" max="100" step="1" value="20" oninput="calculate()" />
+      <p class="muted" id="potencyHint" style="margin-top: 4px; font-size: 0.85rem;">Dispensary flower is typically 15–30%. If you don't know, 20% is a good estimate.</p>
+    </div>
+
+    <div class="field">
+      <label for="price" id="priceLabel">Price per gram ($)</label>
+      <input type="number" id="price" min="0" step="0.5" value="10" oninput="calculate()" />
+      <p class="muted" id="priceHint" style="margin-top: 4px; font-size: 0.85rem;">US dispensary average for flower is ~$10/g. Concentrates run $30–60/g; vape carts ~$25–50 each.</p>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="years">Years of regular use</label>
+    <input type="number" id="years" min="0" step="0.5" value="5" oninput="calculate()" />
+  </div>
+
+</form>
+
+<div id="output" class="result card show" style="background: var(--accent-soft); border-color: #c8e2dd;">
+  <div class="row">
+    <div>
+      <div class="muted" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: var(--accent);">THC per day</div>
+      <div class="score" id="mgDay" style="font-size: 1.9rem;">—</div>
+      <div class="muted" style="font-size: 0.85rem;" id="mgDayContext"></div>
+    </div>
+    <div>
+      <div class="muted" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: var(--accent);">THC per month</div>
+      <div class="score" id="mgMonth" style="font-size: 1.9rem;">—</div>
+      <div class="muted" style="font-size: 0.85rem;" id="mgMonthContext"></div>
+    </div>
+  </div>
+
+  <hr style="margin: 18px 0;" />
+
+  <div class="row">
+    <div>
+      <div class="muted" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: var(--accent);">Monthly cost</div>
+      <div class="score" id="dMonth" style="font-size: 1.9rem;">—</div>
+    </div>
+    <div>
+      <div class="muted" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: var(--accent);">Annual cost</div>
+      <div class="score" id="dYear" style="font-size: 1.9rem;">—</div>
+    </div>
+    <div>
+      <div class="muted" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: var(--accent);">Over your years used</div>
+      <div class="score" id="dLife" style="font-size: 1.9rem;">—</div>
+    </div>
+  </div>
+
+  <hr style="margin: 18px 0;" />
+
+  <div>
+    <div class="muted" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: var(--accent);">What 30 days off would save</div>
+    <div class="score" id="d30" style="font-size: 1.9rem;">—</div>
+    <p id="d30Context" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.95rem; color: var(--ink); margin-top: 0;"></p>
+  </div>
+</div>
+
+<hr />
+
+<h2>How to read this</h2>
+
+<p>The "THC per day" number is the total <em>chemical</em> THC content of what you consume
+— not the amount that reaches your bloodstream. Bioavailability varies: smoking and
+vaping deliver about 20–35% to the bloodstream, edibles about 4–20%. The total content
+number is still useful because it scales linearly with exposure to the receptor system
+that drives tolerance, dependence, and CHS risk.</p>
+
+<p>For context: a typical joint in the early 1990s contained roughly <strong>10 mg of
+THC content</strong>. That's a reference point — not a target. A current daily user
+of dispensary flower is usually in the hundreds of mg per day. A daily concentrate
+user is often in the thousands.</p>
+
+<h2>About the cost number</h2>
+
+<p>The annual cost figure surprises a lot of people. Common patterns:</p>
+<ul>
+  <li>"$10–15 a day in flower" → $3,600–5,500 per year</li>
+  <li>"A vape cart a week" → $1,300–2,500 per year</li>
+  <li>"A gram of concentrate every couple days" → $5,000–11,000 per year</li>
+</ul>
+
+<p>This is not a moral observation — money spent on cannabis is no different from money
+spent on alcohol, eating out, or any other discretionary category. But many users have
+never added it up and find the multi-year number more motivating than any health
+argument.</p>
+
+<h2>What the "30 days off" number isn't</h2>
+
+<p>It's not pressure. Lots of people read it, think "huh, interesting," and keep using.
+That's a fine outcome — the tool's job is to show you what's true, not to tell you what
+to do.</p>
+
+<p>It's also not a guarantee that 30 days off would be easy. See the
+<a href="../pages/withdrawal.html">withdrawal page</a> for what to expect, and the
+<a href="../pages/quitting.html">quitting page</a> for how to actually do it.</p>
+
+<hr />
+
+<p class="muted"><a href="../index.html">← Back to start</a> · <a href="./cudit-r.html">CUDIT-R</a> · <a href="./withdrawal-check.html">Withdrawal check</a></p>
+
+</main>
+
+<footer class="site"><div class="wrap"><p>Honest Cannabis — patient education only. Not medical advice. Nothing entered here is stored or sent.</p></div></footer>
+
+<script>
+function updateProductUI() {
+  const product = document.getElementById('product').value;
+  const amount = document.getElementById('amount');
+  const amountLabel = document.getElementById('amountLabel');
+  const amountHint = document.getElementById('amountHint');
+  const potency = document.getElementById('potency');
+  const potencyLabel = document.getElementById('potencyLabel');
+  const potencyHint = document.getElementById('potencyHint');
+  const price = document.getElementById('price');
+  const priceLabel = document.getElementById('priceLabel');
+  const priceHint = document.getElementById('priceHint');
+
+  if (product === 'flower') {
+    amountLabel.textContent = 'Grams per day';
+    amountHint.textContent = 'A typical joint is 0.3–0.5 g. A bowl is ~0.25 g. A heavy daily user is 1–2 g.';
+    amount.value = amount.dataset.flower || 0.5;
+    potencyLabel.textContent = 'THC potency (%)';
+    potencyHint.textContent = 'Dispensary flower is typically 15–30%. If you don’t know, 20% is reasonable.';
+    potency.value = potency.dataset.flower || 20;
+    priceLabel.textContent = 'Price per gram ($)';
+    priceHint.textContent = 'US dispensary average is ~$10/g. Black market often less, premium more.';
+    price.value = price.dataset.flower || 10;
+  } else if (product === 'vape') {
+    amountLabel.textContent = 'Carts per week (0.5g or 1g)';
+    amountHint.textContent = 'A 1g cart at 80% THC contains 800 mg. Many users go through 1–3 per week.';
+    amount.value = amount.dataset.vape || 1;
+    potencyLabel.textContent = 'Cart THC potency (%)';
+    potencyHint.textContent = 'Distillate vape carts are typically 70–95%.';
+    potency.value = potency.dataset.vape || 85;
+    priceLabel.textContent = 'Price per cart ($)';
+    priceHint.textContent = 'Dispensary vape carts run $25–60 each.';
+    price.value = price.dataset.vape || 40;
+  } else if (product === 'concentrate') {
+    amountLabel.textContent = 'Grams per week';
+    amountHint.textContent = 'Heavy dab users often consume 1–7 g per week. A single dab is ~0.1 g.';
+    amount.value = amount.dataset.concentrate || 1;
+    potencyLabel.textContent = 'Concentrate THC potency (%)';
+    potencyHint.textContent = 'Concentrates are typically 60–90%. Live resin and rosin on the higher end.';
+    potency.value = potency.dataset.concentrate || 75;
+    priceLabel.textContent = 'Price per gram ($)';
+    priceHint.textContent = 'Dispensary concentrates run $30–80/g depending on type.';
+    price.value = price.dataset.concentrate || 45;
+  } else if (product === 'edible') {
+    amountLabel.textContent = 'mg of THC per day';
+    amountHint.textContent = 'A typical dispensary gummy is 5–10 mg. Heavy edible users consume 50–200+ mg/day.';
+    amount.value = amount.dataset.edible || 25;
+    potencyLabel.textContent = 'Not applicable (already in mg)';
+    potencyHint.textContent = 'Edible THC is already labeled in mg, so we use that directly.';
+    potency.value = 100;
+    priceLabel.textContent = 'Cost per 10 mg ($)';
+    priceHint.textContent = 'Dispensary edibles run roughly $1–3 per 10 mg of THC.';
+    price.value = price.dataset.edible || 2;
+  }
+}
+
+function calculate() {
+  const product = document.getElementById('product').value;
+  const amount = parseFloat(document.getElementById('amount').value) || 0;
+  const days = Math.max(0, Math.min(7, parseFloat(document.getElementById('daysPerWeek').value) || 0));
+  const potency = parseFloat(document.getElementById('potency').value) || 0;
+  const price = parseFloat(document.getElementById('price').value) || 0;
+  const years = parseFloat(document.getElementById('years').value) || 0;
+
+  // Save per-product values
+  const a = document.getElementById('amount');
+  const p = document.getElementById('potency');
+  const pr = document.getElementById('price');
+  a.dataset[product] = amount;
+  p.dataset[product] = potency;
+  pr.dataset[product] = price;
+
+  let mgPerUseDay = 0;
+  let dollarsPerUseDay = 0;
+  let mgPerWeek = 0;
+  let dollarsPerWeek = 0;
+
+  if (product === 'flower' || product === 'concentrate') {
+    // amount is grams. If concentrate, the field is "per week"; flower is "per day"
+    if (product === 'flower') {
+      mgPerUseDay = amount * 1000 * (potency / 100); // grams * 1000 mg/g * fraction
+      dollarsPerUseDay = amount * price;
+      mgPerWeek = mgPerUseDay * days;
+      dollarsPerWeek = dollarsPerUseDay * days;
+    } else {
+      // concentrate: amount is g/week
+      const gramsPerDayOfUse = days > 0 ? amount / days : 0;
+      mgPerUseDay = gramsPerDayOfUse * 1000 * (potency / 100);
+      dollarsPerUseDay = gramsPerDayOfUse * price;
+      mgPerWeek = amount * 1000 * (potency / 100);
+      dollarsPerWeek = amount * price;
+    }
+  } else if (product === 'vape') {
+    // amount is carts/week. Assume 1g cart per the input convention.
+    const mgPerCart = 1000 * (potency / 100);
+    mgPerWeek = amount * mgPerCart;
+    dollarsPerWeek = amount * price;
+    mgPerUseDay = days > 0 ? mgPerWeek / days : 0;
+    dollarsPerUseDay = days > 0 ? dollarsPerWeek / days : 0;
+  } else if (product === 'edible') {
+    // amount is mg per use day; price is per 10mg
+    mgPerUseDay = amount;
+    dollarsPerUseDay = (amount / 10) * price;
+    mgPerWeek = mgPerUseDay * days;
+    dollarsPerWeek = dollarsPerUseDay * days;
+  }
+
+  const mgPerMonth = mgPerWeek * (52 / 12);
+  const dollarsPerMonth = dollarsPerWeek * (52 / 12);
+  const dollarsPerYear = dollarsPerWeek * 52;
+  const dollarsLifetime = dollarsPerYear * years;
+  const dollars30Day = dollarsPerMonth;
+
+  const mgPerAvgDay = mgPerWeek / 7;
+
+  document.getElementById('mgDay').textContent = formatMg(mgPerAvgDay);
+  document.getElementById('mgDayContext').textContent = contextMgDay(mgPerAvgDay);
+  document.getElementById('mgMonth').textContent = formatMg(mgPerMonth);
+  document.getElementById('mgMonthContext').textContent = contextMgMonth(mgPerMonth);
+  document.getElementById('dMonth').textContent = '$' + formatMoney(dollarsPerMonth);
+  document.getElementById('dYear').textContent = '$' + formatMoney(dollarsPerYear);
+  document.getElementById('dLife').textContent = '$' + formatMoney(dollarsLifetime);
+  document.getElementById('d30').textContent = '$' + formatMoney(dollars30Day);
+  document.getElementById('d30Context').innerHTML = contextDollars(dollars30Day, dollarsPerYear);
+}
+
+function formatMg(mg) {
+  if (mg < 1) return mg.toFixed(2) + ' mg';
+  if (mg < 100) return mg.toFixed(0) + ' mg';
+  if (mg < 1000) return Math.round(mg / 10) * 10 + ' mg';
+  if (mg < 10000) return (mg / 1000).toFixed(1) + ' g';
+  return Math.round(mg / 1000) + ' g';
+}
+
+function formatMoney(n) {
+  if (!isFinite(n)) return '0';
+  if (n < 100) return n.toFixed(0);
+  if (n < 10000) return Math.round(n).toLocaleString();
+  return Math.round(n).toLocaleString();
+}
+
+function contextMgDay(mg) {
+  if (mg === 0) return '';
+  const jointsEquivalent = mg / 10; // ~10mg per 1990s joint
+  if (jointsEquivalent < 0.5) return 'Equivalent to less than half a 1990s joint per day';
+  if (jointsEquivalent < 5) return '≈ ' + jointsEquivalent.toFixed(1) + ' 1990s joints worth of THC per day';
+  return '≈ ' + Math.round(jointsEquivalent) + ' 1990s joints worth of THC per day';
+}
+
+function contextMgMonth(mg) {
+  if (mg === 0) return '';
+  if (mg < 100) return '';
+  if (mg < 1000) return 'Roughly a low daily-user month';
+  if (mg < 10000) return 'In the range of a moderate-to-heavy monthly user';
+  if (mg < 50000) return 'In the range of a heavy daily user';
+  return 'In the range of very heavy concentrate use';
+}
+
+function contextDollars(month, year) {
+  if (month === 0) return '';
+  let item = '';
+  if (month >= 1500) item = 'a month of rent in many US cities';
+  else if (month >= 800) item = 'a car payment';
+  else if (month >= 400) item = 'a decent flight to somewhere new';
+  else if (month >= 200) item = 'a nice dinner out for two, weekly';
+  else if (month >= 80) item = 'a streaming and software stack for the year';
+  else if (month > 0) item = 'a few coffees a week';
+
+  let line = item ? 'That\'s about <strong>' + item + '</strong>. ' : '';
+  if (year > 0) line += 'Over a year of abstinence: <strong>$' + formatMoney(year) + '</strong>.';
+  return line;
+}
+
+updateProductUI();
+calculate();
+</script>
+
+</body>
+</html>
